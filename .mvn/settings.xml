@@ -4,62 +4,27 @@
                       http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
   <activeProfiles>
-    <activeProfile>api</activeProfile>
+    <activeProfile>default</activeProfile>
   </activeProfiles>
 
   <profiles>
-    
     <profile>
-      <id>api</id>
+      <id>default</id>
       <repositories>
         <repository>
-          <id>github</id>
+          <id>github.repository</id>
           <url>https://maven.pkg.github.com/ebookipedia/*</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
         </repository>
       </repositories>
-    </profile>
-    
-    <profile>
-      <id>cli</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <executions>
-              <execution>
-                <phase>package</phase>
-                <goals>
-                  <goal>single</goal>
-                </goals>
-                <configuration>
-                  <archive>
-                    <manifest>
-                      <mainClass>
-                        mirror.Wikipedia
-                      </mainClass>
-                    </manifest>
-                  </archive>
-                  <descriptorRefs>
-                    <descriptorRef>jar-with-dependencies</descriptorRef>
-                  </descriptorRefs>
-                  <appendAssemblyId>false</appendAssemblyId>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-
-    </profile>
+    </profile>    
   </profiles>
 
   <servers>
     <server>
-      <id>github</id>
+      <id>github.server</id>
       <username>${github.user}</username>
       <password>${github.token}</password>
     </server>
